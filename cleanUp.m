@@ -5,8 +5,8 @@ function [V, W] = cleanUp(Ahat, d)
 % V are the outut vectors.
 % W are the unmatched vectors that we're not sure of.
 
-options = statset( 'MaxIter', 1000);
-[indices, centres] = kmeans(Ahat', 2*d, 'options', options);
+%options = statset( 'MaxIter', 1000);
+[indices, centres] = kmeans(Ahat', 2*d, 'MaxIter', 1000);
 centres = centres';
 centres = bsxfun(@rdivide, centres, sum(centres.^2).^0.5);
 

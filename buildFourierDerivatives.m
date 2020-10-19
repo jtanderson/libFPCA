@@ -17,8 +17,9 @@ if nargin < 4
     % Really, it's a much better idea to let the program decide how big to
     % make the chunks. If this is done incorrectly, the code slows down
     % orders of magnitudes due to paging from disk.
-    [~, systemView] = memory();
-    chunkSize = floor(systemView.PhysicalMemory.Available/ (8 * 1.2 * 2 * n^k));
+    %[~, systemView] = memory();
+    %chunkSize = floor(systemView.PhysicalMemory.Available/ (8 * 1.2 * 2 * n^k));
+    chunkSize = 32000000000/(8*1.2*2*n^k);
     
     % Magic constants all round: 8 is for the size of the doubles, n^k is
     % for the size of the largest tensor, 2 is because we have to make all
